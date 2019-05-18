@@ -19,6 +19,7 @@ def get_selectwords(texts_words):
 
 if __name__ == '__main__':
 
+    #ramenall.txtは、すべての口コミテキストをぶちこんだテキストデータ
     f = open("ramenall.txt","r",encoding = "UTF-8")
     r = f.read()
     f.close()

@@ -36,15 +36,14 @@ def make_word_list(text,wordlist):
     return word_list
 
 
-
 if __name__== '__main__':
     
+    #select_words3.csvは、先ほどの排除リストを除いた、ピックアップ単語一覧のデータ
     select_word = pd.read_csv("select_words3.csv").values.tolist()
     select_wordlist = []
     for i in select_word:
         select_wordlist = select_wordlist + i
         
-
     f = open("ramenall.txt","r",encoding = "UTF-8")
     text = f.read()
     f.close()
@@ -57,15 +56,6 @@ if __name__== '__main__':
         bbb = TaggedDocument(words = word,tags=[cnt])
         trainings.append(bbb)
         cnt += 1
-
-    print(trainings[:10])
-
-
-    #空白で単語を区切り、改行で文書を区切っているテキストデータ
-
-    #１文書ずつ、単語に分割してリストに入れていく[([単語1,単語2,単語3],文書id),...]こんなイメージ
-    #words：文書に含まれる単語のリスト（単語の重複あり）
-    # tags：文書の識別子（リストで指定．1つの文書に複数のタグを付与できる）
 
     c = Doc2Vec(documents= trainings, dm = 1, window=8, min_count=1, workers=4)
     c.save(".\kramenall_selectword3.model")

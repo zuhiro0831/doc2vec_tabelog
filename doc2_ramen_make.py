@@ -45,6 +45,7 @@ if __name__=='__main__':
 
     cc = Doc2Vec.load("kramenall_selectword3.model")
 
+    #同ディレクトリの中に、店舗それぞれの口コミデータを全て入れたフォルダ「kutikomi」を作成しておく
     komi = sorted(glob.glob("kutikomi\*.txt"))
 
     #リストにそれぞれの店舗の口コミデータを処理したものを格納
